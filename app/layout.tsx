@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.className} ${playfair.variable} antialiased`}>
+      <body className={`${outfit.className} ${playfair.variable} antialiased`} suppressHydrationWarning>
         <ThemeProvider>
           <CartProvider>
             <Header />
