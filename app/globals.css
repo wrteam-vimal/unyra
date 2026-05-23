@@ -521,7 +521,7 @@
 
     /* SECTION STYLING */
     .section-wrapper {
-      padding: 7rem 5%;
+      padding: 5rem 5%;
       max-width: 1300px;
       margin: 0 auto;
     }
@@ -541,7 +541,7 @@
       font-size: 1rem;
       font-weight: 400;
       color: var(--text-muted);
-      margin-bottom: 4rem;
+      margin-bottom: 2.5rem;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 2.5px;
@@ -552,7 +552,7 @@
       display: flex;
       justify-content: center;
       gap: 1.2rem;
-      margin-bottom: 4rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
 
@@ -581,9 +581,9 @@
 
     #productsGridContainer {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 3rem;
-      margin-bottom: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .product-card {
