@@ -2512,6 +2512,47 @@
       padding-top: 5rem;
     }
 
+    .horizontal-scroll-container {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding: 1rem 0.5rem 2.5rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-gold) var(--primary-light);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar-track {
+      background: rgba(197, 154, 111, 0.05);
+      border-radius: 4px;
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar-thumb {
+      background: var(--accent-gold);
+      border-radius: 4px;
+      transition: var(--transition-smooth);
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-gold-hover);
+    }
+
+    .horizontal-scroll-item {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+    }
+
+    @media (max-width: 480px) {
+      .horizontal-scroll-item {
+        flex: 0 0 240px;
+      }
+    }
+
     /* RESPONSIVE BREAKPOINTS FOR PRODUCT DETAILS */
     @media (max-width: 991px) {
       .pd-container {

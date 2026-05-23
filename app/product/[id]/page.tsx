@@ -42,9 +42,7 @@ export default function ProductDetailsPage({ params }: ProductPageProps) {
     );
   }
 
-  const similarProducts = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 4);
+  const otherProducts = products.filter((p) => p.id !== product.id);
 
   const displayPrice = () => {
     if (product.price.startsWith("$")) {
@@ -209,13 +207,15 @@ export default function ProductDetailsPage({ params }: ProductPageProps) {
         </div>
       </div>
 
-      {/* Similar Products Carousel section */}
-      {similarProducts.length > 0 && (
+      {/* All Products horizontal scrollable section */}
+      {otherProducts.length > 0 && (
         <div className="pd-similar-wrapper">
-          <h2 className="section-title" style={{ textAlign: "left", marginBottom: "3rem" }}>Similar Products</h2>
-          <div className="products-grid" id="productsGridContainer" style={{ marginBottom: 0 }}>
-            {similarProducts.map((simProd) => (
-              <ProductCard key={simProd.id} product={simProd} />
+          <h2 className="section-title" style={{ textAlign: "left", marginBottom: "3rem" }}>Explore Our Collection</h2>
+          <div className="horizontal-scroll-container">
+            {otherProducts.map((simProd) => (
+              <div className="horizontal-scroll-item" key={simProd.id}>
+                <ProductCard product={simProd} />
+              </div>
             ))}
           </div>
         </div>
