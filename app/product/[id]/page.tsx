@@ -89,6 +89,30 @@ export default function ProductDetailsPage({ params }: ProductPageProps) {
               </button>
             ))}
           </div>
+
+          <div className="pd-highlights">
+            <div className="pd-highlight-item">
+              <div className="pd-highlight-icon">🌿</div>
+              <div className="pd-highlight-text">
+                <span className="pd-highlight-title">Vegan & Cruelty-Free</span>
+                <span className="pd-highlight-desc">100% plant-based formulas, never tested on animals.</span>
+              </div>
+            </div>
+            <div className="pd-highlight-item">
+              <div className="pd-highlight-icon">✨</div>
+              <div className="pd-highlight-text">
+                <span className="pd-highlight-title">Care Beyond Gender</span>
+                <span className="pd-highlight-desc">Bio-compatible skincare designed for all identities.</span>
+              </div>
+            </div>
+            <div className="pd-highlight-item">
+              <div className="pd-highlight-icon">🛡️</div>
+              <div className="pd-highlight-text">
+                <span className="pd-highlight-title">Clean Formulation</span>
+                <span className="pd-highlight-desc">Zero parabens, synthetic fragrances, or silicones.</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Right Column: Information & specs */}
@@ -211,9 +235,29 @@ export default function ProductDetailsPage({ params }: ProductPageProps) {
       {otherProducts.length > 0 && (
         <div className="pd-similar-wrapper">
           <h2 className="section-title" style={{ textAlign: "left", marginBottom: "3rem" }}>Explore Our Collection</h2>
-          <div className="horizontal-scroll-container">
+          <div 
+            className="horizontal-scroll-container" 
+            style={{ 
+              display: "flex", 
+              flexDirection: "row", 
+              flexWrap: "nowrap", 
+              gap: "2rem", 
+              overflowX: "auto", 
+              padding: "1rem 0.5rem 2.5rem", 
+              scrollSnapType: "x mandatory", 
+              WebkitOverflowScrolling: "touch" 
+            }}
+          >
             {otherProducts.map((simProd) => (
-              <div className="horizontal-scroll-item" key={simProd.id}>
+              <div 
+                className="horizontal-scroll-item" 
+                key={simProd.id} 
+                style={{ 
+                  flex: "0 0 280px", 
+                  minWidth: "280px", 
+                  scrollSnapAlign: "start" 
+                }}
+              >
                 <ProductCard product={simProd} />
               </div>
             ))}
