@@ -21,7 +21,7 @@ export default function ShippingInfo() {
           <p>Shipping rates are calculated at checkout based on your location and chosen shipping method. Free standard shipping is available for all domestic orders over $50.</p>
 
           <h3>Order Tracking</h3>
-          <p>Once your order has shipped, you will receive a confirmation email with a tracking number so you can monitor your package's progress.</p>
+          <p>Once your order has shipped, you will receive a confirmation email with a tracking number so you can monitor your package&apos;s progress.</p>
         </div>
       </div>
     </div>

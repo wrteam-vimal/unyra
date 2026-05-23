@@ -12,19 +12,19 @@ export default function TermsConditions() {
           <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
 
           <h3>Use License</h3>
-          <p>Permission is granted to temporarily download one copy of the materials (information or software) on Unyra's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not modify or copy the materials, use them for commercial purposes, attempt to decompile software, remove copyright notations, transfer materials to another person, violate any applicable laws or regulations.</p>
+          <p>Permission is granted to temporarily download one copy of the materials (information or software) on Unyra&apos;s website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not modify or copy the materials, use them for commercial purposes, attempt to decompile software, remove copyright notations, transfer materials to another person, violate any applicable laws or regulations.</p>
 
           <h3>Disclaimer</h3>
-          <p>The materials on Unyra's website are provided on an 'as is' basis. Unyra makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+          <p>The materials on Unyra&apos;s website are provided on an &apos;as is&apos; basis. Unyra disclaims all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
 
           <h3>Limitations</h3>
-          <p>In no event shall Unyra or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Unyra's website, even if Unyra or an authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+          <p>In no event shall Unyra or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Unyra&apos;s website, even if Unyra or an authorized representative has been notified orally or in writing of the possibility of such damage.</p>
 
           <h3>Accuracy of Materials</h3>
-          <p>The materials appearing on Unyra's website could include technical, typographical, or photographic errors. Unyra does not warrant that any of the materials on its website are accurate, complete, or current. Unyra may make changes to the materials contained on its website at any time without notice.</p>
+          <p>The materials appearing on Unyra&apos;s website could include technical, typographical, or photographic errors. Unyra does not warrant that any of the materials on its website are accurate, complete, or current. Unyra may make changes to the materials contained on its website at any time without notice.</p>
 
           <h3>Links</h3>
-          <p>Unyra has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Unyra of the site. Use of any such linked website is at the user's own risk.</p>
+          <p>Unyra has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Unyra of the site. Use of any such linked website is at the user&apos;s own risk.</p>
 
           <h3>Modifications</h3>
           <p>Unyra may revise these terms of service for its website at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>

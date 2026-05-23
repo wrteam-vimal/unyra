@@ -103,7 +103,7 @@ export default function Home() {
           </div>
           <div className="about-content">
             <h3>Clean Beauty, Defined.</h3>
-            <p>At <strong>Unyra</strong>, we believe skincare should be an uncomplicated ritual of self-love. Born from the desire to create effective, inclusive, and clean products, we meticulously formulate everything to work with your skin's natural intelligence.</p>
+            <p>At <strong>Unyra</strong>, we believe skincare should be an uncomplicated ritual of self-love. Born from the desire to create effective, inclusive, and clean products, we meticulously formulate everything to work with your skin&apos;s natural intelligence.</p>
             <p>We say no to harsh chemicals, artificial fragrances, and unnecessary fillers. Instead, we embrace the power of nature combined with clean science.</p>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function Home() {
         <div className="about-grid">
           <div className="about-content">
             <h3>Care Beyond Gender.</h3>
-            <p>Skin is skin. Our formulations are designed around concerns, not gender labels. Whether you're targeting hydration, brightening, or anti-aging, our products deliver results for everyone.</p>
+            <p>Skin is skin. Our formulations are designed around concerns, not gender labels. Whether you&apos;re targeting hydration, brightening, or anti-aging, our products deliver results for everyone.</p>
             <p>Embrace a routine that celebrates you, exactly as you are.</p>
           </div>
           <div className="about-image">
@@ -127,19 +127,19 @@ export default function Home() {
         <div className="testimonials-grid">
           <div className="testimonial-card">
             <div className="rating">★★★★★</div>
-            <p className="testimonial-text">"I've struggled with finding a moisturizer that doesn't feel heavy but actually hydrates. The Unyra Moisturiser is a game-changer. My skin feels plump and looks radiant all day."</p>
+            <p className="testimonial-text">&ldquo;I&apos;ve struggled with finding a moisturizer that doesn&apos;t feel heavy but actually hydrates. The Unyra Moisturiser is a game-changer. My skin feels plump and looks radiant all day.&rdquo;</p>
             <div className="testimonial-author">Alex D.</div>
           </div>
           
           <div className="testimonial-card">
             <div className="rating">★★★★★</div>
-            <p className="testimonial-text">"Finally, a brand that understands skincare shouldn't be complicated or gendered. The Face Serum has completely transformed my evening routine."</p>
+            <p className="testimonial-text">&ldquo;Finally, a brand that understands skincare shouldn&apos;t be complicated or gendered. The Face Serum has completely transformed my evening routine.&rdquo;</p>
             <div className="testimonial-author">Sam R.</div>
           </div>
           
           <div className="testimonial-card">
             <div className="rating">★★★★☆</div>
-            <p className="testimonial-text">"The Body Wash is incredibly refreshing. I love the subtle, natural scent. It cleanses beautifully without leaving my skin feeling tight or dry."</p>
+            <p className="testimonial-text">&ldquo;The Body Wash is incredibly refreshing. I love the subtle, natural scent. It cleanses beautifully without leaving my skin feeling tight or dry.&rdquo;</p>
             <div className="testimonial-author">Jordan P.</div>
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function Home() {
 
       <section id="contact" className="section-wrapper">
         <h2 className="section-title">Get in Touch</h2>
-        <div className="section-subtitle">We're here to help with your skincare journey</div>
+        <div className="section-subtitle">We&apos;re here to help with your skincare journey</div>
         
         <div className="contact-wrapper">
           <form className="contact-form" onSubmit={handleFormSubmit}>

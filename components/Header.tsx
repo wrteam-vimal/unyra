@@ -9,7 +9,7 @@ import { useCart } from "@/context/CartContext";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   const { toggleCart, cartTotalQty } = useCart();
   const pathname = usePathname();
 

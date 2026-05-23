@@ -35,7 +35,7 @@ export default function Checkout() {
           </div>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "var(--primary-dark)", marginBottom: "1rem" }}>Order Confirmed!</h2>
           <p style={{ color: "var(--text-muted)", marginBottom: "2rem", lineHeight: "1.6" }}>
-            Thank you for your purchase. We've received your order and will email you with shipping details shortly.
+            Thank you for your purchase. We&apos;ve received your order and will email you with shipping details shortly.
           </p>
           <button 
             className="cta-button" 

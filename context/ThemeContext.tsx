@@ -18,7 +18,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
-    setTheme(initialTheme);
+    setTimeout(() => {
+      setTheme(initialTheme);
+    }, 0);
     document.documentElement.setAttribute("data-theme", initialTheme);
   }, []);
 

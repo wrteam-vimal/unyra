@@ -36,7 +36,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       try {
-        setCart(JSON.parse(savedCart));
+        setTimeout(() => {
+          setCart(JSON.parse(savedCart));
+        }, 0);
       } catch (e) {
         console.error("Failed to parse cart", e);
       }
