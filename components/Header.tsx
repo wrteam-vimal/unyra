@@ -57,17 +57,19 @@ export default function Header() {
             <svg className="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
 
-          <button className="theme-toggle" onClick={toggleCart} style={{position: 'relative'}} aria-label="Open cart">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-            </svg>
+          <div style={{ position: 'relative', display: 'inline-flex' }}>
+            <button className="theme-toggle" onClick={toggleCart} aria-label="Open cart">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </button>
             {cartTotalQty > 0 && (
               <span className="cart-badge" style={{
                 position: 'absolute',
-                top: '-5px',
-                right: '-5px',
+                top: '0px',
+                right: '0px',
                 background: 'var(--accent-gold)',
                 color: 'white',
                 fontSize: '0.7rem',
@@ -77,12 +79,14 @@ export default function Header() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                pointerEvents: 'none',
+                zIndex: 10
               }}>
                 {cartTotalQty}
               </span>
             )}
-          </button>
+          </div>
 
           <button className={`hamburger ${menuActive ? "active" : ""}`} onClick={toggleMenu} aria-label="Toggle menu">
             <span></span>
