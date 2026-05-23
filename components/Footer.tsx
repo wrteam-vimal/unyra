@@ -49,10 +49,10 @@ export default function Footer() {
           <div className="footer-column">
             <h4>Legal</h4>
             <ul className="footer-links">
-              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-              <li><Link href="/refund-policy">Refund Policy</Link></li>
-              <li><Link href="/terms-conditions">Terms & Conditions</Link></li>
-              <li><Link href="/shipping-info">Shipping Info</Link></li>
+              <li><Link href="/privacy-policy" prefetch={false}>Privacy Policy</Link></li>
+              <li><Link href="/refund-policy" prefetch={false}>Refund Policy</Link></li>
+              <li><Link href="/terms-conditions" prefetch={false}>Terms & Conditions</Link></li>
+              <li><Link href="/shipping-info" prefetch={false}>Shipping Info</Link></li>
             </ul>
           </div>
 
