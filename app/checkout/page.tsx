@@ -1,26 +1,103 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
+import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Checkout() {
   const { cart, cartSubtotal, promoDiscount, promoCode, checkoutTotal, clearCart } = useCart();
+  const { currentUser, placeOrder } = useUser();
+  const router = useRouter();
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+
   const [selectedPayment, setSelectedPayment] = useState("card");
   const [orderPlaced, setOrderPlaced] = useState(false);
-  const router = useRouter();
+  const [placedOrderId, setPlacedOrderId] = useState("");
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (currentUser) {
+      setEmail(currentUser.email);
+      // Auto-fill from name if possible
+      const nameParts = currentUser.name.split(" ");
+      setFirstName(nameParts[0] || "");
+      setLastName(nameParts.slice(1).join(" ") || "");
+
+      // If user has past orders, auto-fill from the last order
+      if (currentUser.orders.length > 0) {
+        const lastOrder = currentUser.orders[0];
+        setFirstName(lastOrder.shippingAddress.firstName);
+        setLastName(lastOrder.shippingAddress.lastName);
+        setStreet(lastOrder.shippingAddress.street);
+        setCity(lastOrder.shippingAddress.city);
+        setState(lastOrder.shippingAddress.state);
+        setZip(lastOrder.shippingAddress.zip);
+      }
+    }
+  }, [currentUser]);
 
   const handlePlaceOrder = (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+
     if (cart.length === 0) {
-      alert("Your cart is empty!");
+      setError("Your cart is empty!");
       return;
     }
-    
-    // Simulate order placement
-    setOrderPlaced(true);
-    clearCart();
+
+    const shippingAddress = {
+      firstName,
+      lastName,
+      email,
+      street,
+      city,
+      state,
+      zip
+    };
+
+    if (!currentUser) {
+      // Redirect to login if user clicks place order without login
+      alert("Please sign in or create an account to complete your checkout.");
+      router.push(`/login?redirect=/checkout`);
+      return;
+    }
+
+    const cartItems = cart.map(item => ({
+      product: {
+        id: item.product.id,
+        name: item.product.name,
+        price: item.product.price,
+        image: item.product.image,
+        size: item.product.size
+      },
+      qty: item.qty
+    }));
+
+    const result = placeOrder(
+      cartItems,
+      cartSubtotal,
+      cartSubtotal * promoDiscount,
+      checkoutTotal,
+      shippingAddress,
+      selectedPayment
+    );
+
+    if (result.success && result.orderId) {
+      setPlacedOrderId(result.orderId);
+      setOrderPlaced(true);
+      clearCart();
+    } else {
+      setError(result.error || "Failed to place your order. Please try again.");
+    }
   };
 
   if (orderPlaced) {
@@ -34,20 +111,34 @@ export default function Checkout() {
             </svg>
           </div>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "var(--primary-dark)", marginBottom: "1rem" }}>Order Confirmed!</h2>
-          <p style={{ color: "var(--text-muted)", marginBottom: "2rem", lineHeight: "1.6" }}>
+          <p style={{ color: "var(--text-muted)", marginBottom: "0.5rem", lineHeight: "1.6" }}>
             Thank you for your purchase. We&apos;ve received your order and will email you with shipping details shortly.
           </p>
-          <button 
-            className="cta-button" 
-            style={{ backgroundColor: "var(--primary-dark)", color: "var(--white)", border: "none" }}
-            onClick={() => router.push("/")}
-          >
-            Continue Shopping
-          </button>
+          <p style={{ fontSize: "0.95rem", color: "var(--accent-gold)", fontWeight: "bold", marginBottom: "2.5rem" }}>
+            Order ID: {placedOrderId}
+          </p>
+          <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+            <Link
+              href={`/dashboard/orders/${placedOrderId}`}
+              className="cta-button"
+              style={{ backgroundColor: "var(--accent-gold)", color: "var(--white)", border: "none", textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+            >
+              View Invoice Details
+            </Link>
+            <Link
+              href="/"
+              className="cta-button"
+              style={{ backgroundColor: "var(--primary-dark)", color: "var(--white)", border: "none", textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+            >
+              Continue Shopping
+            </Link>
+          </div>
         </div>
       </div>
     );
   }
+
+  const isWalletInsufficient = currentUser && selectedPayment === "wallet" && currentUser.walletBalance < checkoutTotal;
 
   return (
     <div className="section-wrapper" style={{ minHeight: "80vh", paddingTop: "120px" }}>
@@ -56,37 +147,123 @@ export default function Checkout() {
           <h2>Secure Checkout</h2>
           <Link href="/" style={{ color: "var(--text-muted)", textDecoration: "none" }}>Return to Shop</Link>
         </div>
+
+        {!currentUser && (
+          <div style={{
+            background: "rgba(197, 154, 111, 0.08)",
+            border: "1px solid rgba(197, 154, 111, 0.15)",
+            padding: "1rem 1.5rem",
+            borderRadius: "12px",
+            marginBottom: "2rem",
+            fontSize: "0.9rem",
+            color: "var(--primary-dark)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem"
+          }}>
+            <span>Already have an account? Sign in for saved addresses and wallet payments.</span>
+            <Link href="/login?redirect=/checkout" className="topup-amt-btn" style={{ textDecoration: "none", display: "inline-block" }}>
+              Sign In
+            </Link>
+          </div>
+        )}
         
         <div className="checkout-body">
           <form className="checkout-form" onSubmit={handlePlaceOrder}>
+            {error && (
+              <div style={{
+                background: "rgba(245, 101, 101, 0.1)",
+                border: "1px solid rgba(245, 101, 101, 0.3)",
+                color: "#f56565",
+                padding: "0.8rem 1.2rem",
+                borderRadius: "30px",
+                fontSize: "0.85rem",
+                marginBottom: "2rem",
+                textAlign: "center"
+              }}>
+                {error}
+              </div>
+            )}
+
             <div className="checkout-section-title">1. Shipping Information</div>
             
             <div className="form-row">
               <div className="form-group">
-                <input type="text" className="form-control" placeholder="First Name" required />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  placeholder="First Name" 
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required 
+                />
               </div>
               <div className="form-group">
-                <input type="text" className="form-control" placeholder="Last Name" required />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  placeholder="Last Name" 
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required 
+                />
               </div>
             </div>
             
             <div className="form-group">
-              <input type="email" className="form-control" placeholder="Email Address" required />
+              <input 
+                type="email" 
+                className="form-control" 
+                placeholder="Email Address" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required 
+              />
             </div>
             
             <div className="form-group">
-              <input type="text" className="form-control" placeholder="Street Address" required />
+              <input 
+                type="text" 
+                className="form-control" 
+                placeholder="Street Address" 
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
+                required 
+              />
             </div>
             
             <div className="form-row">
               <div className="form-group">
-                <input type="text" className="form-control" placeholder="City" required />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  placeholder="City" 
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required 
+                />
               </div>
               <div className="form-group">
-                <input type="text" className="form-control" placeholder="State/Province" required />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  placeholder="State/Province" 
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                  required 
+                />
               </div>
               <div className="form-group">
-                <input type="text" className="form-control" placeholder="Zip/Postal Code" required />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  placeholder="Zip/Postal Code" 
+                  value={zip}
+                  onChange={(e) => setZip(e.target.value)}
+                  required 
+                />
               </div>
             </div>
             
@@ -97,9 +274,51 @@ export default function Checkout() {
             <div className="checkout-section-title" style={{ marginTop: "3rem" }}>2. Payment Method</div>
             
             <div className="payment-options">
+              {/* Wallet payment option */}
+              {currentUser && (
+                <div 
+                  className={`payment-option ${selectedPayment === "wallet" ? "selected" : ""}`} 
+                  onClick={() => setSelectedPayment("wallet")}
+                >
+                  <input 
+                    type="radio" 
+                    name="payment" 
+                    id="pay-wallet" 
+                    checked={selectedPayment === "wallet"} 
+                    onChange={() => setSelectedPayment("wallet")} 
+                  />
+                  <label htmlFor="pay-wallet" style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", cursor: "pointer" }}>
+                    <span>Pay with Unyra Wallet</span>
+                    <span style={{ fontSize: "0.85rem", fontWeight: 600, color: currentUser.walletBalance >= checkoutTotal ? "#48bb78" : "#f56565" }}>
+                      Balance: ${currentUser.walletBalance.toFixed(2)}
+                    </span>
+                  </label>
+                </div>
+              )}
+
+              {isWalletInsufficient && (
+                <div style={{
+                  background: "rgba(245, 101, 101, 0.08)",
+                  border: "1px solid rgba(245, 101, 101, 0.2)",
+                  borderRadius: "8px",
+                  padding: "1rem 1.25rem",
+                  marginTop: "-0.8rem",
+                  marginBottom: "1rem",
+                  fontSize: "0.85rem",
+                  color: "#f56565"
+                }}>
+                  ⚠️ <strong>Insufficient Balance</strong>. You need another <strong>${(checkoutTotal - currentUser.walletBalance).toFixed(2)}</strong> in your wallet.
+                  <div style={{ marginTop: "0.75rem" }}>
+                    <Link href="/dashboard" className="topup-amt-btn" style={{ fontSize: "0.75rem", padding: "0.25rem 0.75rem", textDecoration: "none", display: "inline-block" }}>
+                      Recharge Wallet
+                    </Link>
+                  </div>
+                </div>
+              )}
+
               <div className={`payment-option ${selectedPayment === "card" ? "selected" : ""}`} onClick={() => setSelectedPayment("card")}>
                 <input type="radio" name="payment" id="pay-card" checked={selectedPayment === "card"} onChange={() => setSelectedPayment("card")} />
-                <label htmlFor="pay-card">Credit / Debit Card</label>
+                <label htmlFor="pay-card" style={{ cursor: "pointer" }}>Credit / Debit Card</label>
                 <div style={{ display: "flex", gap: "0.5rem" }}>
                   <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><rect width="32" height="20" rx="4" fill="#EAE6E1"/><circle cx="11" cy="10" r="6" fill="#EB001B"/><circle cx="21" cy="10" r="6" fill="#F79E1B"/></svg>
                 </div>
@@ -123,16 +342,21 @@ export default function Checkout() {
               
               <div className={`payment-option ${selectedPayment === "paypal" ? "selected" : ""}`} onClick={() => setSelectedPayment("paypal")}>
                 <input type="radio" name="payment" id="pay-paypal" checked={selectedPayment === "paypal"} onChange={() => setSelectedPayment("paypal")} />
-                <label htmlFor="pay-paypal">PayPal</label>
+                <label htmlFor="pay-paypal" style={{ cursor: "pointer" }}>PayPal</label>
               </div>
               
               <div className={`payment-option ${selectedPayment === "apple" ? "selected" : ""}`} onClick={() => setSelectedPayment("apple")}>
                 <input type="radio" name="payment" id="pay-apple" checked={selectedPayment === "apple"} onChange={() => setSelectedPayment("apple")} />
-                <label htmlFor="pay-apple">Apple Pay</label>
+                <label htmlFor="pay-apple" style={{ cursor: "pointer" }}>Apple Pay</label>
               </div>
             </div>
             
-            <button type="submit" className="btn-checkout" style={{ marginTop: "3rem" }}>
+            <button 
+              type="submit" 
+              className="btn-checkout" 
+              style={{ marginTop: "3rem" }} 
+              disabled={!!isWalletInsufficient}
+            >
               Place Order — ${checkoutTotal.toFixed(2)}
             </button>
           </form>

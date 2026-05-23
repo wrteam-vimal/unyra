@@ -51,14 +51,7 @@ export default function Home() {
         <div className="hero-overlay"></div>
         
         <div className="hero-banner">
-          <div className="banner-carousel" id="bannerCarousel">
-            <div className="carousel-content" key={bannerIndex} style={{ animation: "fadeIn 0.5s" }}>
-              <span className="carousel-tag">{msg.tag}</span>
-              <div className="carousel-text">{msg.text}</div>
-              <div className="carousel-subtitle">{msg.subtitle}</div>
-              <button className="cta-button hero-cta" onClick={scrollToShop}>Explore Shop</button>
-            </div>
-          </div>
+          <div className="banner-carousel" id="bannerCarousel"></div>
           
           <div className="carousel-nav" id="carouselNav">
             {bannerMessages.map((_, i) => (

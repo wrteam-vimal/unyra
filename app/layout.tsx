@@ -3,6 +3,7 @@ import { Playfair_Display, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { CartProvider } from "@/context/CartContext";
+import { UserProvider } from "@/context/UserContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
@@ -34,12 +35,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`${outfit.className} ${playfair.variable} antialiased`} suppressHydrationWarning>
         <ThemeProvider>
-          <CartProvider>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <CartSidebar />
-          </CartProvider>
+          <UserProvider>
+            <CartProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <CartSidebar />
+            </CartProvider>
+          </UserProvider>
         </ThemeProvider>
       </body>
     </html>

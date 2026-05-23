@@ -38,7 +38,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-        
+
         <div className="qv-container">
           <div className="qv-top">
             <div className="qv-gallery">
@@ -75,9 +75,9 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                   product.price
                 )}
               </div>
-              
+
               <div className="qv-desc" dangerouslySetInnerHTML={{ __html: product.details.description }} />
-              
+
               <div className="qv-actions">
                 <div className="qv-qty">
                   <button onClick={() => setQty(Math.max(1, qty - 1))}>-</button>
@@ -89,20 +89,20 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
 
               <div style={{ marginTop: "1rem" }}>
                 <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem", borderBottom: "1px solid var(--border-color)" }}>
-                  <button 
+                  <button
                     style={{ background: "none", border: "none", padding: "0.5rem 0", cursor: "pointer", borderBottom: activeTab === "details" ? "2px solid var(--accent-gold)" : "2px solid transparent", color: activeTab === "details" ? "var(--primary-dark)" : "var(--text-muted)", fontWeight: activeTab === "details" ? 600 : 400 }}
                     onClick={() => setActiveTab("details")}
                   >
                     Details
                   </button>
-                  <button 
+                  <button
                     style={{ background: "none", border: "none", padding: "0.5rem 0", cursor: "pointer", borderBottom: activeTab === "reviews" ? "2px solid var(--accent-gold)" : "2px solid transparent", color: activeTab === "reviews" ? "var(--primary-dark)" : "var(--text-muted)", fontWeight: activeTab === "reviews" ? 600 : 400 }}
                     onClick={() => setActiveTab("reviews")}
                   >
                     Reviews
                   </button>
                 </div>
-                
+
                 {activeTab === "details" && (
                   <table className="qv-specs-table">
                     <tbody>

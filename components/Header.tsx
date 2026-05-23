@@ -5,12 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeContext";
 import { useCart } from "@/context/CartContext";
+import { useUser } from "@/context/UserContext";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { toggleTheme } = useTheme();
   const { toggleCart, cartTotalQty } = useCart();
+  const { currentUser, logout } = useUser();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -87,6 +90,38 @@ export default function Header() {
               }}>
                 {cartTotalQty}
               </span>
+            )}
+          </div>
+
+          <div style={{ position: "relative", display: "inline-flex", alignItems: "center" }} onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
+            {currentUser ? (
+              <>
+                <Link href="/dashboard" aria-label="View account" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "50%", background: "rgba(197, 154, 111, 0.1)", border: "2px solid var(--accent-gold)", color: "var(--accent-gold)", fontWeight: 600, fontSize: "0.8rem", marginLeft: "0.5rem", textDecoration: "none" }}>
+                  {currentUser.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)}
+                </Link>
+                {dropdownOpen && (
+                    <div className="user-dropdown" style={{ position: "absolute", top: "100%", right: 0, marginTop: "10px", background: "var(--bg-color)", border: "1px solid var(--border-color)", borderRadius: "8px", padding: "10px", display: "flex", flexDirection: "column", gap: "8px", minWidth: "120px" }}>
+                      {currentUser ? (
+                        <>
+                          <Link href="/dashboard" style={{ fontSize: "0.9rem", color: "var(--text-color)" }}>Dashboard</Link>
+                          <button onClick={logout} style={{ fontSize: "0.9rem", color: "red", background: "none", border: "none", cursor: "pointer", padding: 0 }}>Logout</button>
+                        </>
+                      ) : (
+                        <>
+                          <Link href="/login" style={{ fontSize: "0.9rem", color: "var(--text-color)" }}>Login</Link>
+                          <Link href="/register" style={{ fontSize: "0.9rem", color: "var(--text-color)" }}>Register</Link>
+                        </>
+                      )}
+                    </div>
+                  )}
+              </>
+            ) : (
+              <div className="profile-placeholder" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "50%", background: "var(--bg-cream)", border: "2px solid var(--border-color)", color: "var(--primary-dark)", marginLeft: "0.5rem" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
             )}
           </div>
 
