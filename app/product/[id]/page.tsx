@@ -42,7 +42,7 @@ export default function ProductDetailsPage({ params }: ProductPageProps) {
     );
   }
 
-  const otherProducts = products.filter((p) => p.id !== product.id);
+  const otherProducts = products;
 
   const displayPrice = () => {
     if (product.price.startsWith("$")) {
