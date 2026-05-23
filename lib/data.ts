@@ -41,10 +41,10 @@ export const products: Product[] = [
     size: "100ml",
     type: "Face Care",
     price: "$24.99",
-    image: "images/5.jpeg",
+    image: "/images/5.jpeg",
     category: "face",
     details: {
-      images: ["images/5.jpeg", "images/4.jpeg", "images/3.jpeg"],
+      images: ["/images/5.jpeg", "/images/4.jpeg", "/images/3.jpeg"],
       description: "Lakmé Peach Milk Crème with 2% PRO-CERAMIDE & PEPTIDES provides intense hydration and strengthens your skin's barrier for a soft, healthy glow. Clinically proven.<br><br>Powered by PRO-CERAMIDE, this moisturizer instantly repairs your skin's barrier and protects it from environmental aggressors, leaving it soft and smooth.",
       specs: {
         "Item Volume": "100 Millilitres",
@@ -69,7 +69,7 @@ export const products: Product[] = [
             date: "Reviewed on 12 May 2026",
             verified: true,
             text: "Absolutely love this! It leaves my skin feeling so soft and hydrated without being greasy. The peach scent is very subtle and pleasant.",
-            images: ["images/5.jpeg"]
+            images: ["/images/5.jpeg"]
           },
           {
             name: "Emily R.",
@@ -91,10 +91,10 @@ export const products: Product[] = [
     size: "200ml",
     type: "Body Care",
     price: "$26.99",
-    image: "images/4.jpeg",
+    image: "/images/4.jpeg",
     category: "body",
     details: {
-      images: ["images/4.jpeg", "images/2.jpeg", "images/5.jpeg"],
+      images: ["/images/4.jpeg", "/images/2.jpeg", "/images/5.jpeg"],
       description: "Refresh and revive your skin with our gentle Body Wash. It cleanses without stripping natural oils.",
       specs: {
         "Item Volume": "200 Millilitres",
@@ -132,10 +132,10 @@ export const products: Product[] = [
     size: "200ml",
     type: "Face Care",
     price: "$34.99",
-    image: "images/3.jpeg",
+    image: "/images/3.jpeg",
     category: "face",
     details: {
-      images: ["images/3.jpeg", "images/6.jpeg", "images/7.jpeg"],
+      images: ["/images/3.jpeg", "/images/6.jpeg", "/images/7.jpeg"],
       description: "Lakmé Peach Milk Crème with 2% PRO-CERAMIDE & PEPTIDES provides intense hydration and strengthens your skin's barrier for a soft, healthy glow. Clinically proven.",
       specs: {
         "Item Volume": "200 Millilitres",
@@ -160,7 +160,7 @@ export const products: Product[] = [
             date: "Reviewed on 2 March 2026",
             verified: true,
             text: "The best moisturizer I have ever used. Highly recommend to everyone with dry skin.",
-            images: ["images/3.jpeg"]
+            images: ["/images/3.jpeg"]
           }
         ]
       }
@@ -173,10 +173,10 @@ export const products: Product[] = [
     size: "60ml",
     type: "Body Care",
     price: "$18.99",
-    image: "images/2.jpeg",
+    image: "/images/2.jpeg",
     category: "body",
     details: {
-      images: ["images/2.jpeg", "images/4.jpeg"],
+      images: ["/images/2.jpeg", "/images/4.jpeg"],
       description: "A light, refreshing mist that hydrates and uplifts the senses. Perfect for on-the-go.",
       specs: {
         "Item Volume": "60 Millilitres",
@@ -214,10 +214,10 @@ export const products: Product[] = [
     size: "30ml",
     type: "Face Care",
     price: "$39.99",
-    image: "images/7.jpeg",
+    image: "/images/7.jpeg",
     category: "face",
     details: {
-      images: ["images/7.jpeg", "images/3.jpeg", "images/5.jpeg"],
+      images: ["/images/7.jpeg", "/images/3.jpeg", "/images/5.jpeg"],
       description: "Potent face serum designed to brighten your complexion and renew skin cells overnight.",
       specs: {
         "Item Volume": "30 Millilitres",
@@ -255,10 +255,10 @@ export const products: Product[] = [
     size: "50gm",
     type: "Face Care",
     price: "$28.99",
-    image: "images/6.jpeg",
+    image: "/images/6.jpeg",
     category: "face",
     details: {
-      images: ["images/6.jpeg", "images/5.jpeg"],
+      images: ["/images/6.jpeg", "/images/5.jpeg"],
       description: "Detoxify and restore your skin with our D-TAN mask. Helps remove sun tan and dead skin cells.",
       specs: {
         "Item Volume": "50 Grams",
@@ -283,7 +283,7 @@ export const products: Product[] = [
             date: "Reviewed on 22 March 2026",
             verified: true,
             text: "Works really well on my tan. My skin felt very clean after using it.",
-            images: ["images/6.jpeg"]
+            images: ["/images/6.jpeg"]
           }
         ]
       }

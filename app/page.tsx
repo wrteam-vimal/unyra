@@ -43,7 +43,7 @@ export default function Home() {
             <div 
               key={num} 
               className={`hero-bg-slide ${i === bannerIndex ? "active" : ""}`}
-              style={{ backgroundImage: `url(images/${num}.jpeg)` }}
+              style={{ backgroundImage: `url(/images/${num}.jpeg)` }}
             ></div>
           ))}
         </div>
@@ -99,7 +99,7 @@ export default function Home() {
       <section id="about" className="section-wrapper">
         <div className="about-grid">
           <div className="about-image">
-            <img src="images/6.jpeg" alt="Natural ingredients" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+            <img src="/images/6.jpeg" alt="Natural ingredients" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
           </div>
           <div className="about-content">
             <h3>Clean Beauty, Defined.</h3>
@@ -115,7 +115,7 @@ export default function Home() {
             <p>Embrace a routine that celebrates you, exactly as you are.</p>
           </div>
           <div className="about-image">
-            <img src="images/7.jpeg" alt="Inclusive skincare" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+            <img src="/images/7.jpeg" alt="Inclusive skincare" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
           </div>
         </div>
       </section>
