@@ -5,8 +5,8 @@ import React from "react";
 export default function RefundPolicy() {
   return (
     <div className="section-wrapper" style={{ minHeight: "80vh", paddingTop: "120px" }}>
-      <div className="modal-content" style={{ margin: "0 auto", position: "relative", transform: "none", width: "100%", maxWidth: "800px" }}>
-        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.2rem" }}>Returns & Refund Policy</h2>
+      <div style={{ margin: "0 auto", width: "100%", maxWidth: "800px" }}>
+        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.5rem" }}>Returns & Refund Policy</h2>
         <div className="policy-content">
           <h3>Our Commitment to Your Satisfaction</h3>
           <p>At Unyra, customer satisfaction is our top priority. We stand behind the quality of our products and offer a comprehensive refund policy to ensure you're completely happy with your purchase.</p>

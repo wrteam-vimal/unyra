@@ -5,8 +5,8 @@ import React from "react";
 export default function TermsConditions() {
   return (
     <div className="section-wrapper" style={{ minHeight: "80vh", paddingTop: "120px" }}>
-      <div className="modal-content" style={{ margin: "0 auto", position: "relative", transform: "none", width: "100%", maxWidth: "800px" }}>
-        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.2rem" }}>Terms & Conditions</h2>
+      <div style={{ margin: "0 auto", width: "100%", maxWidth: "800px" }}>
+        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.5rem" }}>Terms & Conditions</h2>
         <div className="policy-content">
           <h3>Acceptance of Terms</h3>
           <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>

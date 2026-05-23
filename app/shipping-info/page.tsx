@@ -5,8 +5,8 @@ import React from "react";
 export default function ShippingInfo() {
   return (
     <div className="section-wrapper" style={{ minHeight: "80vh", paddingTop: "120px" }}>
-      <div className="modal-content" style={{ margin: "0 auto", position: "relative", transform: "none", width: "100%", maxWidth: "800px" }}>
-        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.2rem" }}>Shipping Information</h2>
+      <div style={{ margin: "0 auto", width: "100%", maxWidth: "800px" }}>
+        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.5rem" }}>Shipping Information</h2>
         <div className="policy-content">
           <h3>Domestic Shipping</h3>
           <p>We offer standard and expedited shipping options for all domestic orders. Standard shipping typically takes 3-5 business days, while expedited shipping takes 1-2 business days.</p>

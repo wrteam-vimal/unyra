@@ -5,8 +5,8 @@ import React from "react";
 export default function PrivacyPolicy() {
   return (
     <div className="section-wrapper" style={{ minHeight: "80vh", paddingTop: "120px" }}>
-      <div className="modal-content" style={{ margin: "0 auto", position: "relative", transform: "none", width: "100%", maxWidth: "800px" }}>
-        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.2rem" }}>Privacy Policy</h2>
+      <div style={{ margin: "0 auto", width: "100%", maxWidth: "800px" }}>
+        <h2 className="section-title" style={{ marginBottom: "2rem", textAlign: "left", fontSize: "2.5rem" }}>Privacy Policy</h2>
         <div className="policy-content">
           <h3>Introduction</h3>
           <p>At Unyra, we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
