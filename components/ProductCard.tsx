@@ -33,7 +33,16 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="product-benefits">{product.benefits}</div>
           <div className="product-name">{product.name}</div>
           <div className="product-size">{product.size}</div>
-          <div className="product-price">{product.price}</div>
+          <div className="product-price">
+            {product.price.startsWith("$") ? (
+              <>
+                <span className="price-currency">$</span>
+                {product.price.slice(1)}
+              </>
+            ) : (
+              product.price
+            )}
+          </div>
         </div>
       </div>
       

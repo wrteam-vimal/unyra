@@ -65,7 +65,16 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
                 <span>★</span>
                 <span className="qv-rating-count">({product.details.reviews.total} reviews)</span>
               </div>
-              <div className="qv-price">{product.price}</div>
+              <div className="qv-price">
+                {product.price.startsWith("$") ? (
+                  <>
+                    <span className="price-currency">$</span>
+                    {product.price.slice(1)}
+                  </>
+                ) : (
+                  product.price
+                )}
+              </div>
               
               <div className="qv-desc" dangerouslySetInnerHTML={{ __html: product.details.description }} />
               
