@@ -36,8 +36,10 @@ export default function Header() {
     return isHome ? `#${hash}` : `/#${hash}`;
   };
 
+  const showScrolled = scrolled || !isHome;
+
   return (
-    <header className={scrolled ? "scrolled" : ""}>
+    <header className={showScrolled ? "scrolled" : ""}>
       <nav>
         <Link href="/" className="logo">
           Unyra.
